@@ -12,7 +12,7 @@ def random_distance_generator():
     directions.left = random.randint(10, 200)
     return directions
 
-def distance_sensor():
+def distance_sensor_node():
     directions = distance_sensor()
 
     pub = rospy.Publisher('/distance', distance_sensor, queue_size=10)
@@ -29,6 +29,6 @@ def distance_sensor():
 
 if __name__ == '__main__':
     try:
-        distance_sensor()
+        distance_sensor_node()
     except rospy.ROSInterruptException:
         pass                            
