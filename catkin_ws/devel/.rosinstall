@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/rohamzn/Robotics-Course/catkin_ws/devel/setup.sh
