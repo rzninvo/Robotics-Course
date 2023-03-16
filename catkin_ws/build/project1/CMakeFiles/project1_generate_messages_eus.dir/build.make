@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/rohamzn/Robotics-Course/catkin_ws/build
 include project1/CMakeFiles/project1_generate_messages_eus.dir/progress.make
 
 project1/CMakeFiles/project1_generate_messages_eus: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg/distance_sensor.l
+project1/CMakeFiles/project1_generate_messages_eus: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg/controller.l
 project1/CMakeFiles/project1_generate_messages_eus: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/manifest.l
 
 
@@ -62,12 +63,18 @@ project1/CMakeFiles/project1_generate_messages_eus: /home/rohamzn/Robotics-Cours
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from project1/distance_sensor.msg"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg
 
+/home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg/controller.l: /opt/ros/noetic/lib/geneus/gen_eus.py
+/home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg/controller.l: /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from project1/controller.msg"
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg
+
 /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for project1"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp manifest code for project1"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1 project1 std_msgs
 
 project1_generate_messages_eus: project1/CMakeFiles/project1_generate_messages_eus
 project1_generate_messages_eus: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg/distance_sensor.l
+project1_generate_messages_eus: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/msg/controller.l
 project1_generate_messages_eus: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/roseus/ros/project1/manifest.l
 project1_generate_messages_eus: project1/CMakeFiles/project1_generate_messages_eus.dir/build.make
 

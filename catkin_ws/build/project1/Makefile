@@ -101,6 +101,18 @@ test/fast: test
 
 .PHONY : test/fast
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -122,18 +134,6 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -196,6 +196,36 @@ project1_gennodejs: project1/CMakeFiles/project1_gennodejs.dir/rule
 project1_gennodejs/fast:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_gennodejs.dir/build.make project1/CMakeFiles/project1_gennodejs.dir/build
 .PHONY : project1_gennodejs/fast
+
+# Convenience name for target.
+project1/CMakeFiles/project1_genlisp.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_genlisp.dir/rule
+.PHONY : project1/CMakeFiles/project1_genlisp.dir/rule
+
+# Convenience name for target.
+project1_genlisp: project1/CMakeFiles/project1_genlisp.dir/rule
+
+.PHONY : project1_genlisp
+
+# fast build rule for target.
+project1_genlisp/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_genlisp.dir/build.make project1/CMakeFiles/project1_genlisp.dir/build
+.PHONY : project1_genlisp/fast
+
+# Convenience name for target.
+project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+.PHONY : project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+std_msgs_generate_messages_cpp: project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : std_msgs_generate_messages_cpp
+
+# fast build rule for target.
+std_msgs_generate_messages_cpp/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
+.PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 project1/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
@@ -318,6 +348,21 @@ project1_geneus/fast:
 .PHONY : project1_geneus/fast
 
 # Convenience name for target.
+project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/rule
+.PHONY : project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/rule
+
+# Convenience name for target.
+_project1_generate_messages_check_deps_controller: project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/rule
+
+.PHONY : _project1_generate_messages_check_deps_controller
+
+# fast build rule for target.
+_project1_generate_messages_check_deps_controller/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/build.make project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/build
+.PHONY : _project1_generate_messages_check_deps_controller/fast
+
+# Convenience name for target.
 project1/CMakeFiles/project1_generate_messages_nodejs.dir/rule:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_generate_messages_nodejs.dir/rule
 .PHONY : project1/CMakeFiles/project1_generate_messages_nodejs.dir/rule
@@ -392,36 +437,6 @@ project1_generate_messages_eus/fast:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_generate_messages_eus.dir/build.make project1/CMakeFiles/project1_generate_messages_eus.dir/build
 .PHONY : project1_generate_messages_eus/fast
 
-# Convenience name for target.
-project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-project1/CMakeFiles/project1_genlisp.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_genlisp.dir/rule
-.PHONY : project1/CMakeFiles/project1_genlisp.dir/rule
-
-# Convenience name for target.
-project1_genlisp: project1/CMakeFiles/project1_genlisp.dir/rule
-
-.PHONY : project1_genlisp
-
-# fast build rule for target.
-project1_genlisp/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_genlisp.dir/build.make project1/CMakeFiles/project1_genlisp.dir/build
-.PHONY : project1_genlisp/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -434,6 +449,9 @@ help:
 	@echo "... test"
 	@echo "... project1_genpy"
 	@echo "... project1_gennodejs"
+	@echo "... install/strip"
+	@echo "... project1_genlisp"
+	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... install"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... project1_generate_messages"
@@ -444,14 +462,12 @@ help:
 	@echo "... _project1_generate_messages_check_deps_distance_sensor"
 	@echo "... project1_generate_messages_py"
 	@echo "... project1_geneus"
+	@echo "... _project1_generate_messages_check_deps_controller"
 	@echo "... project1_generate_messages_nodejs"
 	@echo "... project1_gencpp"
 	@echo "... project1_generate_messages_lisp"
 	@echo "... project1_generate_messages_cpp"
 	@echo "... project1_generate_messages_eus"
-	@echo "... install/strip"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... project1_genlisp"
 .PHONY : help
 
 

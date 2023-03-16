@@ -58,33 +58,41 @@
   (left m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <distance_sensor>) ostream)
   "Serializes a message object of type '<distance_sensor>"
-  (cl:let* ((signed (cl:slot-value msg 'front)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'front)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'back)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'back)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'right)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'right)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
-  (cl:let* ((signed (cl:slot-value msg 'left)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
+  (cl:let* ((signed (cl:slot-value msg 'left)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 65536) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) unsigned) ostream)
     )
 )
 (cl:defmethod roslisp-msg-protocol:deserialize ((msg <distance_sensor>) istream)
   "Deserializes a message object of type '<distance_sensor>"
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'front) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'front) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'back) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'back) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'right) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'right) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'left) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+      (cl:setf (cl:ldb (cl:byte 8 8) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'left) (cl:if (cl:< unsigned 32768) unsigned (cl:- unsigned 65536))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<distance_sensor>)))
@@ -95,22 +103,22 @@
   "project1/distance_sensor")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<distance_sensor>)))
   "Returns md5sum for a message object of type '<distance_sensor>"
-  "ed4e666c5e7c96f4232b8795fa5cafaa")
+  "2969a9d54c2e9d0595d756c5915a9c3c")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'distance_sensor)))
   "Returns md5sum for a message object of type 'distance_sensor"
-  "ed4e666c5e7c96f4232b8795fa5cafaa")
+  "2969a9d54c2e9d0595d756c5915a9c3c")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<distance_sensor>)))
   "Returns full string definition for message of type '<distance_sensor>"
-  (cl:format cl:nil "int8    front~%int8    back~%int8    right~%int8    left~%~%"))
+  (cl:format cl:nil "int16    front~%int16    back~%int16   right~%int16    left~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'distance_sensor)))
   "Returns full string definition for message of type 'distance_sensor"
-  (cl:format cl:nil "int8    front~%int8    back~%int8    right~%int8    left~%~%"))
+  (cl:format cl:nil "int16    front~%int16    back~%int16   right~%int16    left~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <distance_sensor>))
   (cl:+ 0
-     1
-     1
-     1
-     1
+     2
+     2
+     2
+     2
 ))
 (cl:defmethod roslisp-msg-protocol:ros-message-to-list ((msg <distance_sensor>))
   "Converts a ROS message object to a list"

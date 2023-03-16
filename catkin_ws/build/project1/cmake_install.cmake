@@ -38,7 +38,10 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1/msg" TYPE FILE FILES "/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/project1/msg" TYPE FILE FILES
+    "/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg"
+    "/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg"
+    )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

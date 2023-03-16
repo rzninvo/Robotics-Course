@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/rohamzn/Robotics-Course/catkin_ws/build
 include project1/CMakeFiles/project1_generate_messages_nodejs.dir/progress.make
 
 project1/CMakeFiles/project1_generate_messages_nodejs: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/distance_sensor.js
+project1/CMakeFiles/project1_generate_messages_nodejs: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/controller.js
 
 
 /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/distance_sensor.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
@@ -61,8 +62,14 @@ project1/CMakeFiles/project1_generate_messages_nodejs: /home/rohamzn/Robotics-Co
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Javascript code from project1/distance_sensor.msg"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg
 
+/home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/controller.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
+/home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/controller.js: /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Javascript code from project1/controller.msg"
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg
+
 project1_generate_messages_nodejs: project1/CMakeFiles/project1_generate_messages_nodejs
 project1_generate_messages_nodejs: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/distance_sensor.js
+project1_generate_messages_nodejs: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/gennodejs/ros/project1/msg/controller.js
 project1_generate_messages_nodejs: project1/CMakeFiles/project1_generate_messages_nodejs.dir/build.make
 
 .PHONY : project1_generate_messages_nodejs

@@ -8,15 +8,15 @@ import struct
 
 
 class distance_sensor(genpy.Message):
-  _md5sum = "ed4e666c5e7c96f4232b8795fa5cafaa"
+  _md5sum = "2969a9d54c2e9d0595d756c5915a9c3c"
   _type = "project1/distance_sensor"
   _has_header = False  # flag to mark the presence of a Header object
-  _full_text = """int8    front
-int8    back
-int8    right
-int8    left"""
+  _full_text = """int16    front
+int16    back
+int16   right
+int16    left"""
   __slots__ = ['front','back','right','left']
-  _slot_types = ['int8','int8','int8','int8']
+  _slot_types = ['int16','int16','int16','int16']
 
   def __init__(self, *args, **kwds):
     """
@@ -62,7 +62,7 @@ int8    left"""
     """
     try:
       _x = self
-      buff.write(_get_struct_4b().pack(_x.front, _x.back, _x.right, _x.left))
+      buff.write(_get_struct_4h().pack(_x.front, _x.back, _x.right, _x.left))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -77,8 +77,8 @@ int8    left"""
       end = 0
       _x = self
       start = end
-      end += 4
-      (_x.front, _x.back, _x.right, _x.left,) = _get_struct_4b().unpack(str[start:end])
+      end += 8
+      (_x.front, _x.back, _x.right, _x.left,) = _get_struct_4h().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -92,7 +92,7 @@ int8    left"""
     """
     try:
       _x = self
-      buff.write(_get_struct_4b().pack(_x.front, _x.back, _x.right, _x.left))
+      buff.write(_get_struct_4h().pack(_x.front, _x.back, _x.right, _x.left))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -108,8 +108,8 @@ int8    left"""
       end = 0
       _x = self
       start = end
-      end += 4
-      (_x.front, _x.back, _x.right, _x.left,) = _get_struct_4b().unpack(str[start:end])
+      end += 8
+      (_x.front, _x.back, _x.right, _x.left,) = _get_struct_4h().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -118,9 +118,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_4b = None
-def _get_struct_4b():
-    global _struct_4b
-    if _struct_4b is None:
-        _struct_4b = struct.Struct("<4b")
-    return _struct_4b
+_struct_4h = None
+def _get_struct_4h():
+    global _struct_4h
+    if _struct_4h is None:
+        _struct_4h = struct.Struct("<4h")
+    return _struct_4h

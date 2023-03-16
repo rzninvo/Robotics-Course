@@ -1,2 +1,2 @@
-int8 clockwise
-int8 theta
+int16    clockwise
+int16    theta

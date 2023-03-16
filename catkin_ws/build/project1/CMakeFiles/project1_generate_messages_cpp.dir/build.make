@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/rohamzn/Robotics-Course/catkin_ws/build
 include project1/CMakeFiles/project1_generate_messages_cpp.dir/progress.make
 
 project1/CMakeFiles/project1_generate_messages_cpp: /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/distance_sensor.h
+project1/CMakeFiles/project1_generate_messages_cpp: /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/controller.h
 
 
 /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/distance_sensor.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
@@ -62,8 +63,15 @@ project1/CMakeFiles/project1_generate_messages_cpp: /home/rohamzn/Robotics-Cours
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from project1/distance_sensor.msg"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/src/project1 && /home/rohamzn/Robotics-Course/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1 -e /opt/ros/noetic/share/gencpp/cmake/..
 
+/home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/controller.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
+/home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/controller.h: /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg
+/home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/controller.h: /opt/ros/noetic/share/gencpp/msg.h.template
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating C++ code from project1/controller.msg"
+	cd /home/rohamzn/Robotics-Course/catkin_ws/src/project1 && /home/rohamzn/Robotics-Course/catkin_ws/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1 -e /opt/ros/noetic/share/gencpp/cmake/..
+
 project1_generate_messages_cpp: project1/CMakeFiles/project1_generate_messages_cpp
 project1_generate_messages_cpp: /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/distance_sensor.h
+project1_generate_messages_cpp: /home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/controller.h
 project1_generate_messages_cpp: project1/CMakeFiles/project1_generate_messages_cpp.dir/build.make
 
 .PHONY : project1_generate_messages_cpp

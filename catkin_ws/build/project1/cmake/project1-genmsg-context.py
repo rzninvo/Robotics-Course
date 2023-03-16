@@ -1,6 +1,6 @@
 # generated from genmsg/cmake/pkg-genmsg.context.in
 
-messages_str = "/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg"
+messages_str = "/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg;/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg"
 services_str = ""
 pkg_name = "project1"
 dependencies_str = "std_msgs"

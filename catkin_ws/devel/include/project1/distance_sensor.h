@@ -39,16 +39,16 @@ struct distance_sensor_
 
 
 
-   typedef int8_t _front_type;
+   typedef int16_t _front_type;
   _front_type front;
 
-   typedef int8_t _back_type;
+   typedef int16_t _back_type;
   _back_type back;
 
-   typedef int8_t _right_type;
+   typedef int16_t _right_type;
   _right_type right;
 
-   typedef int8_t _left_type;
+   typedef int16_t _left_type;
   _left_type left;
 
 
@@ -140,12 +140,12 @@ struct MD5Sum< ::project1::distance_sensor_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "ed4e666c5e7c96f4232b8795fa5cafaa";
+    return "2969a9d54c2e9d0595d756c5915a9c3c";
   }
 
   static const char* value(const ::project1::distance_sensor_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0xed4e666c5e7c96f4ULL;
-  static const uint64_t static_value2 = 0x232b8795fa5cafaaULL;
+  static const uint64_t static_value1 = 0x2969a9d54c2e9d05ULL;
+  static const uint64_t static_value2 = 0x95d756c5915a9c3cULL;
 };
 
 template<class ContainerAllocator>
@@ -164,10 +164,10 @@ struct Definition< ::project1::distance_sensor_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "int8    front\n"
-"int8    back\n"
-"int8    right\n"
-"int8    left\n"
+    return "int16    front\n"
+"int16    back\n"
+"int16   right\n"
+"int16    left\n"
 ;
   }
 
@@ -209,13 +209,13 @@ struct Printer< ::project1::distance_sensor_<ContainerAllocator> >
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::project1::distance_sensor_<ContainerAllocator>& v)
   {
     s << indent << "front: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.front);
+    Printer<int16_t>::stream(s, indent + "  ", v.front);
     s << indent << "back: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.back);
+    Printer<int16_t>::stream(s, indent + "  ", v.back);
     s << indent << "right: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.right);
+    Printer<int16_t>::stream(s, indent + "  ", v.right);
     s << indent << "left: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.left);
+    Printer<int16_t>::stream(s, indent + "  ", v.left);
   }
 };
 

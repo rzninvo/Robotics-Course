@@ -1,6 +1,6 @@
 set(_CATKIN_CURRENT_PACKAGE "project1")
 set(project1_VERSION "0.0.0")
-set(project1_MAINTAINER "rohamzn <rohamzn@todo.todo>")
+set(project1_MAINTAINER "rohamzn <rzninvo@gmail.com>")
 set(project1_PACKAGE_FORMAT "2")
 set(project1_BUILD_DEPENDS "message_generation" "rospy" "std_msgs")
 set(project1_BUILD_EXPORT_DEPENDS "rospy" "std_msgs")

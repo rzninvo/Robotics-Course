@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "/home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/controller.h"
   "/home/rohamzn/Robotics-Course/catkin_ws/devel/include/project1/distance_sensor.h"
   "CMakeFiles/project1_generate_messages_cpp"
 )

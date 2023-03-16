@@ -54,13 +54,13 @@ class distance_sensor {
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type distance_sensor
     // Serialize message field [front]
-    bufferOffset = _serializer.int8(obj.front, buffer, bufferOffset);
+    bufferOffset = _serializer.int16(obj.front, buffer, bufferOffset);
     // Serialize message field [back]
-    bufferOffset = _serializer.int8(obj.back, buffer, bufferOffset);
+    bufferOffset = _serializer.int16(obj.back, buffer, bufferOffset);
     // Serialize message field [right]
-    bufferOffset = _serializer.int8(obj.right, buffer, bufferOffset);
+    bufferOffset = _serializer.int16(obj.right, buffer, bufferOffset);
     // Serialize message field [left]
-    bufferOffset = _serializer.int8(obj.left, buffer, bufferOffset);
+    bufferOffset = _serializer.int16(obj.left, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -69,18 +69,18 @@ class distance_sensor {
     let len;
     let data = new distance_sensor(null);
     // Deserialize message field [front]
-    data.front = _deserializer.int8(buffer, bufferOffset);
+    data.front = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [back]
-    data.back = _deserializer.int8(buffer, bufferOffset);
+    data.back = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [right]
-    data.right = _deserializer.int8(buffer, bufferOffset);
+    data.right = _deserializer.int16(buffer, bufferOffset);
     // Deserialize message field [left]
-    data.left = _deserializer.int8(buffer, bufferOffset);
+    data.left = _deserializer.int16(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 4;
+    return 8;
   }
 
   static datatype() {
@@ -90,16 +90,16 @@ class distance_sensor {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return 'ed4e666c5e7c96f4232b8795fa5cafaa';
+    return '2969a9d54c2e9d0595d756c5915a9c3c';
   }
 
   static messageDefinition() {
     // Returns full string definition for message
     return `
-    int8    front
-    int8    back
-    int8    right
-    int8    left
+    int16    front
+    int16    back
+    int16   right
+    int16    left
     `;
   }
 

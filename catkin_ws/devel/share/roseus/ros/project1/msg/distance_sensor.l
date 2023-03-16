@@ -45,58 +45,54 @@
   (:serialization-length
    ()
    (+
-    ;; int8 _front
-    1
-    ;; int8 _back
-    1
-    ;; int8 _right
-    1
-    ;; int8 _left
-    1
+    ;; int16 _front
+    2
+    ;; int16 _back
+    2
+    ;; int16 _right
+    2
+    ;; int16 _left
+    2
     ))
   (:serialize
    (&optional strm)
    (let ((s (if strm strm
               (make-string-output-stream (send self :serialization-length)))))
-     ;; int8 _front
-       (write-byte _front s)
-     ;; int8 _back
-       (write-byte _back s)
-     ;; int8 _right
-       (write-byte _right s)
-     ;; int8 _left
-       (write-byte _left s)
+     ;; int16 _front
+       (write-word _front s)
+     ;; int16 _back
+       (write-word _back s)
+     ;; int16 _right
+       (write-word _right s)
+     ;; int16 _left
+       (write-word _left s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
    (buf &optional (ptr- 0))
-   ;; int8 _front
-     (setq _front (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _front 127) (setq _front (- _front 256)))
-   ;; int8 _back
-     (setq _back (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _back 127) (setq _back (- _back 256)))
-   ;; int8 _right
-     (setq _right (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _right 127) (setq _right (- _right 256)))
-   ;; int8 _left
-     (setq _left (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _left 127) (setq _left (- _left 256)))
+   ;; int16 _front
+     (setq _front (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; int16 _back
+     (setq _back (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; int16 _right
+     (setq _right (sys::peek buf ptr- :short)) (incf ptr- 2)
+   ;; int16 _left
+     (setq _left (sys::peek buf ptr- :short)) (incf ptr- 2)
    ;;
    self)
   )
 
-(setf (get project1::distance_sensor :md5sum-) "ed4e666c5e7c96f4232b8795fa5cafaa")
+(setf (get project1::distance_sensor :md5sum-) "2969a9d54c2e9d0595d756c5915a9c3c")
 (setf (get project1::distance_sensor :datatype-) "project1/distance_sensor")
 (setf (get project1::distance_sensor :definition-)
-      "int8    front
-int8    back
-int8    right
-int8    left
+      "int16    front
+int16    back
+int16   right
+int16    left
 ")
 
 
 
-(provide :project1/distance_sensor "ed4e666c5e7c96f4232b8795fa5cafaa")
+(provide :project1/distance_sensor "2969a9d54c2e9d0595d756c5915a9c3c")
 
 

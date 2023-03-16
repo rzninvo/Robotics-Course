@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/rohamzn/Robotics-Course/catkin_ws/build
 include project1/CMakeFiles/project1_generate_messages_py.dir/progress.make
 
 project1/CMakeFiles/project1_generate_messages_py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_distance_sensor.py
+project1/CMakeFiles/project1_generate_messages_py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_controller.py
 project1/CMakeFiles/project1_generate_messages_py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/__init__.py
 
 
@@ -62,13 +63,20 @@ project1/CMakeFiles/project1_generate_messages_py: /home/rohamzn/Robotics-Course
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python from MSG project1/distance_sensor"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg
 
+/home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_controller.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
+/home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_controller.py: /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python from MSG project1/controller"
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg
+
 /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/__init__.py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_distance_sensor.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python msg __init__.py for project1"
+/home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/__init__.py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_controller.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating Python msg __init__.py for project1"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg --initpy
 
 project1_generate_messages_py: project1/CMakeFiles/project1_generate_messages_py
 project1_generate_messages_py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_distance_sensor.py
+project1_generate_messages_py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/_controller.py
 project1_generate_messages_py: /home/rohamzn/Robotics-Course/catkin_ws/devel/lib/python3/dist-packages/project1/msg/__init__.py
 project1_generate_messages_py: project1/CMakeFiles/project1_generate_messages_py.dir/build.make
 

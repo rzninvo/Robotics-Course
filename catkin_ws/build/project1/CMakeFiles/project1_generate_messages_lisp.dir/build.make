@@ -54,6 +54,7 @@ CMAKE_BINARY_DIR = /home/rohamzn/Robotics-Course/catkin_ws/build
 include project1/CMakeFiles/project1_generate_messages_lisp.dir/progress.make
 
 project1/CMakeFiles/project1_generate_messages_lisp: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/distance_sensor.lisp
+project1/CMakeFiles/project1_generate_messages_lisp: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/controller.lisp
 
 
 /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/distance_sensor.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
@@ -61,8 +62,14 @@ project1/CMakeFiles/project1_generate_messages_lisp: /home/rohamzn/Robotics-Cour
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from project1/distance_sensor.msg"
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/distance_sensor.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg
 
+/home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/controller.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
+/home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/controller.lisp: /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Lisp code from project1/controller.msg"
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build/project1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg/controller.msg -Iproject1:/home/rohamzn/Robotics-Course/catkin_ws/src/project1/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p project1 -o /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg
+
 project1_generate_messages_lisp: project1/CMakeFiles/project1_generate_messages_lisp
 project1_generate_messages_lisp: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/distance_sensor.lisp
+project1_generate_messages_lisp: /home/rohamzn/Robotics-Course/catkin_ws/devel/share/common-lisp/ros/project1/msg/controller.lisp
 project1_generate_messages_lisp: project1/CMakeFiles/project1_generate_messages_lisp.dir/build.make
 
 .PHONY : project1_generate_messages_lisp
