@@ -23,7 +23,7 @@ def calculate_controller_msg(min_distance):
 
 
 def callback(data):
-    rospy.loginfo(rospy.get_caller_id() + "I heard %s", data)
+    rospy.loginfo(rospy.get_caller_id() + f' Received data from \distance topic: {data}')
     directions = {'front': data.front, 'back': data.back, 'right': data.right, 'left': data.left}
     rospy.loginfo(f'min_distance = {min(directions, key= directions.get)}')
 
