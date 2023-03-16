@@ -12,11 +12,21 @@ def controller_msg(clockwise, theta):
     return controlling_parameters
 
 def calculate_controller_msg(min_distance):
+    global robot_state
     if min_distance == 'left':
+        robot_state += 90
+        if robot_state > 360:
+            robot_state -= 360
         return {'motor1': controller_msg(1, 45), 'motor2': controller_msg(-1, 45)}
     elif min_distance == 'right':
+        robot_state -= 90
+        if robot_state < -360:
+            robot_state += 360
         return {'motor1': controller_msg(-1, 45), 'motor2': controller_msg(1, 45)}
     elif min_distance == 'front':
+        robot_state += 180
+        if robot_state > 360:
+            robot_state -= 360
         return {'motor1': controller_msg(1, 90), 'motor2': controller_msg(-1, 90)}
     elif min_distance == 'back':
         return {'motor1': controller_msg(0, 0), 'motor2': controller_msg(0, 0)}
@@ -33,10 +43,13 @@ def callback(data):
     #Publishing data to the motors
     motor1_pub.publish(motor_commands['motor1'])
     motor2_pub.publish(motor_commands['motor2'])
+    print(f"Robot is {robot_state} degrees rotated from it's original angle!")
 
 
 def controller_node():
     global motor1_pub, motor2_pub
+    global robot_state
+    robot_state = 0
     motor1_pub = rospy.Publisher('/motor1', controller, queue_size=10)
     motor2_pub = rospy.Publisher('/motor2', controller, queue_size=10)
     rospy.init_node('controller', anonymous=True)
