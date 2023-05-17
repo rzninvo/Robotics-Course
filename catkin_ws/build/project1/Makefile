@@ -68,6 +68,28 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -113,28 +135,6 @@ install/strip/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # The main all target
 all: cmake_check_build_system
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/rohamzn/Robotics-Course/catkin_ws/build/CMakeFiles /home/rohamzn/Robotics-Course/catkin_ws/build/project1/CMakeFiles/progress.marks
@@ -168,81 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-project1/CMakeFiles/project1_genpy.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_genpy.dir/rule
-.PHONY : project1/CMakeFiles/project1_genpy.dir/rule
-
-# Convenience name for target.
-project1_genpy: project1/CMakeFiles/project1_genpy.dir/rule
-
-.PHONY : project1_genpy
-
-# fast build rule for target.
-project1_genpy/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_genpy.dir/build.make project1/CMakeFiles/project1_genpy.dir/build
-.PHONY : project1_genpy/fast
-
-# Convenience name for target.
-project1/CMakeFiles/project1_gennodejs.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_gennodejs.dir/rule
-.PHONY : project1/CMakeFiles/project1_gennodejs.dir/rule
-
-# Convenience name for target.
-project1_gennodejs: project1/CMakeFiles/project1_gennodejs.dir/rule
-
-.PHONY : project1_gennodejs
-
-# fast build rule for target.
-project1_gennodejs/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_gennodejs.dir/build.make project1/CMakeFiles/project1_gennodejs.dir/build
-.PHONY : project1_gennodejs/fast
-
-# Convenience name for target.
-project1/CMakeFiles/project1_genlisp.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_genlisp.dir/rule
-.PHONY : project1/CMakeFiles/project1_genlisp.dir/rule
-
-# Convenience name for target.
-project1_genlisp: project1/CMakeFiles/project1_genlisp.dir/rule
-
-.PHONY : project1_genlisp
-
-# fast build rule for target.
-project1_genlisp/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_genlisp.dir/build.make project1/CMakeFiles/project1_genlisp.dir/build
-.PHONY : project1_genlisp/fast
-
-# Convenience name for target.
-project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-project1/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : project1/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: project1/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
 project1/CMakeFiles/project1_generate_messages.dir/rule:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_generate_messages.dir/rule
 .PHONY : project1/CMakeFiles/project1_generate_messages.dir/rule
@@ -256,51 +181,6 @@ project1_generate_messages: project1/CMakeFiles/project1_generate_messages.dir/r
 project1_generate_messages/fast:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_generate_messages.dir/build.make project1/CMakeFiles/project1_generate_messages.dir/build
 .PHONY : project1_generate_messages/fast
-
-# Convenience name for target.
-project1/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : project1/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_lisp: project1/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : std_msgs_generate_messages_lisp
-
-# fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-project1/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : project1/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: project1/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-project1/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : project1/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: project1/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/std_msgs_generate_messages_py.dir/build.make project1/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 project1/CMakeFiles/_project1_generate_messages_check_deps_distance_sensor.dir/rule:
@@ -318,34 +198,19 @@ _project1_generate_messages_check_deps_distance_sensor/fast:
 .PHONY : _project1_generate_messages_check_deps_distance_sensor/fast
 
 # Convenience name for target.
-project1/CMakeFiles/project1_generate_messages_py.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_generate_messages_py.dir/rule
-.PHONY : project1/CMakeFiles/project1_generate_messages_py.dir/rule
+project1/CMakeFiles/project1_genpy.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_genpy.dir/rule
+.PHONY : project1/CMakeFiles/project1_genpy.dir/rule
 
 # Convenience name for target.
-project1_generate_messages_py: project1/CMakeFiles/project1_generate_messages_py.dir/rule
+project1_genpy: project1/CMakeFiles/project1_genpy.dir/rule
 
-.PHONY : project1_generate_messages_py
+.PHONY : project1_genpy
 
 # fast build rule for target.
-project1_generate_messages_py/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_generate_messages_py.dir/build.make project1/CMakeFiles/project1_generate_messages_py.dir/build
-.PHONY : project1_generate_messages_py/fast
-
-# Convenience name for target.
-project1/CMakeFiles/project1_geneus.dir/rule:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_geneus.dir/rule
-.PHONY : project1/CMakeFiles/project1_geneus.dir/rule
-
-# Convenience name for target.
-project1_geneus: project1/CMakeFiles/project1_geneus.dir/rule
-
-.PHONY : project1_geneus
-
-# fast build rule for target.
-project1_geneus/fast:
-	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_geneus.dir/build.make project1/CMakeFiles/project1_geneus.dir/build
-.PHONY : project1_geneus/fast
+project1_genpy/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_genpy.dir/build.make project1/CMakeFiles/project1_genpy.dir/build
+.PHONY : project1_genpy/fast
 
 # Convenience name for target.
 project1/CMakeFiles/_project1_generate_messages_check_deps_controller.dir/rule:
@@ -408,6 +273,21 @@ project1_generate_messages_lisp/fast:
 .PHONY : project1_generate_messages_lisp/fast
 
 # Convenience name for target.
+project1/CMakeFiles/project1_gennodejs.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_gennodejs.dir/rule
+.PHONY : project1/CMakeFiles/project1_gennodejs.dir/rule
+
+# Convenience name for target.
+project1_gennodejs: project1/CMakeFiles/project1_gennodejs.dir/rule
+
+.PHONY : project1_gennodejs
+
+# fast build rule for target.
+project1_gennodejs/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_gennodejs.dir/build.make project1/CMakeFiles/project1_gennodejs.dir/build
+.PHONY : project1_gennodejs/fast
+
+# Convenience name for target.
 project1/CMakeFiles/project1_generate_messages_cpp.dir/rule:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_generate_messages_cpp.dir/rule
 .PHONY : project1/CMakeFiles/project1_generate_messages_cpp.dir/rule
@@ -437,6 +317,51 @@ project1_generate_messages_eus/fast:
 	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_generate_messages_eus.dir/build.make project1/CMakeFiles/project1_generate_messages_eus.dir/build
 .PHONY : project1_generate_messages_eus/fast
 
+# Convenience name for target.
+project1/CMakeFiles/project1_geneus.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_geneus.dir/rule
+.PHONY : project1/CMakeFiles/project1_geneus.dir/rule
+
+# Convenience name for target.
+project1_geneus: project1/CMakeFiles/project1_geneus.dir/rule
+
+.PHONY : project1_geneus
+
+# fast build rule for target.
+project1_geneus/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_geneus.dir/build.make project1/CMakeFiles/project1_geneus.dir/build
+.PHONY : project1_geneus/fast
+
+# Convenience name for target.
+project1/CMakeFiles/project1_generate_messages_py.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_generate_messages_py.dir/rule
+.PHONY : project1/CMakeFiles/project1_generate_messages_py.dir/rule
+
+# Convenience name for target.
+project1_generate_messages_py: project1/CMakeFiles/project1_generate_messages_py.dir/rule
+
+.PHONY : project1_generate_messages_py
+
+# fast build rule for target.
+project1_generate_messages_py/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_generate_messages_py.dir/build.make project1/CMakeFiles/project1_generate_messages_py.dir/build
+.PHONY : project1_generate_messages_py/fast
+
+# Convenience name for target.
+project1/CMakeFiles/project1_genlisp.dir/rule:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f CMakeFiles/Makefile2 project1/CMakeFiles/project1_genlisp.dir/rule
+.PHONY : project1/CMakeFiles/project1_genlisp.dir/rule
+
+# Convenience name for target.
+project1_genlisp: project1/CMakeFiles/project1_genlisp.dir/rule
+
+.PHONY : project1_genlisp
+
+# fast build rule for target.
+project1_genlisp/fast:
+	cd /home/rohamzn/Robotics-Course/catkin_ws/build && $(MAKE) -f project1/CMakeFiles/project1_genlisp.dir/build.make project1/CMakeFiles/project1_genlisp.dir/build
+.PHONY : project1_genlisp/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -444,30 +369,25 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/local"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... project1_genpy"
-	@echo "... project1_gennodejs"
-	@echo "... install/strip"
-	@echo "... project1_genlisp"
-	@echo "... std_msgs_generate_messages_cpp"
-	@echo "... install"
-	@echo "... std_msgs_generate_messages_eus"
 	@echo "... project1_generate_messages"
-	@echo "... list_install_components"
-	@echo "... std_msgs_generate_messages_lisp"
-	@echo "... std_msgs_generate_messages_nodejs"
-	@echo "... std_msgs_generate_messages_py"
 	@echo "... _project1_generate_messages_check_deps_distance_sensor"
-	@echo "... project1_generate_messages_py"
-	@echo "... project1_geneus"
+	@echo "... project1_genpy"
 	@echo "... _project1_generate_messages_check_deps_controller"
 	@echo "... project1_generate_messages_nodejs"
 	@echo "... project1_gencpp"
 	@echo "... project1_generate_messages_lisp"
+	@echo "... project1_gennodejs"
 	@echo "... project1_generate_messages_cpp"
 	@echo "... project1_generate_messages_eus"
+	@echo "... project1_geneus"
+	@echo "... project1_generate_messages_py"
+	@echo "... install/strip"
+	@echo "... project1_genlisp"
 .PHONY : help
 
 
