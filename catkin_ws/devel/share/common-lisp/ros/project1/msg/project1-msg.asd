@@ -8,8 +8,4 @@
     (:file "_package_controller" :depends-on ("_package"))
     (:file "distance_sensor" :depends-on ("_package_distance_sensor"))
     (:file "_package_distance_sensor" :depends-on ("_package"))
-    (:file "motor1" :depends-on ("_package_motor1"))
-    (:file "_package_motor1" :depends-on ("_package"))
-    (:file "motor2" :depends-on ("_package_motor2"))
-    (:file "_package_motor2" :depends-on ("_package"))
   ))
