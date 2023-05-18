@@ -18,8 +18,8 @@ class Mission_Node:
         return response
 
     def calculateNextDestination(self, x, y):
-        next_x = 0
-        next_y = 0
+        next_x = random.uniform(-10, 10)
+        next_y = random.uniform(-10, 10)
         while math.sqrt(((next_x - x) ** 2) + ((next_y - y) ** 2)) <= 5:
             next_x = random.uniform(-10, 10)
             next_y = random.uniform(-10, 10)

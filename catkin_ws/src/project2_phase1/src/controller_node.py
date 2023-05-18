@@ -76,6 +76,7 @@ class Controller:
         
         return yaw
     
+    # calculate the rotation need to reach the next angle
     def calculate_rotation_angle(self):
         msg = rospy.wait_for_message("/odom" , Odometry)
         pos = msg.pose.pose.position
@@ -89,7 +90,7 @@ class Controller:
 
     def run(self):
         
-        while (not rospy.is_shutdown()) or (self.iteration_num > 0):
+        while (not rospy.is_shutdown()) and (self.iteration_num > 0):
             
             # check whether state is changed or not
             if self.state == self.GO:
@@ -113,6 +114,7 @@ class Controller:
                     msg = rospy.wait_for_message("/odom" , Odometry)
                     pos = msg.pose.pose.position
                     self.getNextDestinationFromService(pos.x, pos.y)
+                    continue
             
             self.cmd_publisher.publish(Twist())
             
