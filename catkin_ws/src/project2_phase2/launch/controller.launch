@@ -1,9 +1,9 @@
 <launch>
 
   <node pkg="project2_phase2" type="controller_node.py" name="controller" output="screen">
-    <param name="linear_speed" value="4"/>
-    <param name="angular_speed" value="0.5"/>
-    <param name="epsilon" value="0.001"/>
+    <param name="linear_speed" value="1"/>
+    <param name="angular_speed" value="0.75"/>
+    <param name="epsilon" value="0.01"/>
     <param name="goal_angle" value="1"/>
     <param name="stop_distance" value="2"/>
     

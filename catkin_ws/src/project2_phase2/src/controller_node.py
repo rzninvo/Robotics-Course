@@ -35,7 +35,7 @@ class Controller:
                 self.goal_angle = math.radians(180 - msg.direction)
                 self.angular_speed = -abs(self.angular_speed)
             else:
-                self.goal_angle = math.radians(180 - msg.direction)
+                self.goal_angle = math.radians(abs(180 - msg.direction))
                 self.angular_speed = abs(self.angular_speed)
             self.state = self.ROTATE
 
