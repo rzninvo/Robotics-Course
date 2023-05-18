@@ -1,0 +1,28 @@
+<launch>
+
+  <node pkg="project2_phase2" type="controller_node.py" name="controller" output="screen">
+    <param name="linear_speed" value="4"/>
+    <param name="angular_speed" value="0.5"/>
+    <param name="epsilon" value="0.001"/>
+    <param name="goal_angle" value="1"/>
+    <param name="stop_distance" value="2"/>
+    
+  </node>
+
+  <node pkg="project2_phase2" type="sensor_node.py" name="sensor_node"  output="screen"></node>
+  <node pkg="project2_phase2" type="monitor.py" name="monitor" ></node>
+
+
+  <include file="$(find turtlebot3_gazebo)/launch/detect_obstacles.launch">
+    <arg name="x_pos" value="0.0"/>
+    <arg name="y_pos" value="0.0"/>
+    <arg name="z_pos" value="0.0"/>
+    <arg name="yaw" default="0.75"/>
+
+
+
+  </include>  
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch">
+  </include>
+</launch>
