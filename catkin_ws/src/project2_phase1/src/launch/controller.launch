@@ -1,0 +1,24 @@
+<launch>
+
+  <node pkg="project2_phase1" type="controller_node.py" name="controller" output="screen">
+    <param name="linear_speed" value="4"/>
+    <param name="angular_speed" value="0.5"/>
+    <param name="epsilon" value="0.01"/>
+    <param name="iteration_num" value="5"/>
+    
+  </node>
+
+  <node pkg="project2_phase1" type="mission_node.py" name="mission_node"  output="screen"></node>
+  <node pkg="project2_phase1" type="monitor.py" name="monitor" ></node>
+
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch">
+    <arg name="x_pos" value="0.0"/>
+    <arg name="y_pos" value="0.0"/>
+    <arg name="z_pos" value="0.0"/>
+
+  </include>  
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch">
+  </include>
+</launch>
