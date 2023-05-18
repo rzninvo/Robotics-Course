@@ -1,0 +1,3 @@
+source ~/Robotics-Course/catkin_ws/devel/setup.bash
+source ~/Robotics-Course/catkin_ws/venv/bin/activate
+export TURTLEBOT3_MODEL=waffle

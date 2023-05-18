@@ -1,0 +1,8 @@
+prefix=/home/rohamzn/Robotics-Course/catkin_ws/install
+
+Name: project2_phase1
+Description: Description of project2_phase1
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
