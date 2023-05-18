@@ -89,8 +89,10 @@ class Controller:
             f.close()
 
     def run(self):
-        
-        while (not rospy.is_shutdown()) and (self.iteration_num > 0):
+
+        iterations = self.iteration_num
+        errors_avg = 0
+        while (not rospy.is_shutdown()) and (iterations > 0):
             
             # check whether state is changed or not
             if self.state == self.GO:
@@ -106,10 +108,11 @@ class Controller:
                     self.prev_dist = dist
                     continue
                 else:
+                    errors_avg += dist
                     error = Error_Log(pos.x, pos.y, self.next_x, self.next_y, dist)
                     self.error_logs.append(error)
                     rospy.loginfo(error)
-                    self.iteration_num -= 1
+                    iterations -= 1
                     self.prev_dist = 100
                     msg = rospy.wait_for_message("/odom" , Odometry)
                     pos = msg.pose.pose.position
@@ -144,6 +147,8 @@ class Controller:
             rospy.sleep(1)
             
             self.state = self.GO
+
+        rospy.loginfo(f'FINISHED || Average Error: {errors_avg/self.iteration_num}')
 
 
 if __name__ == "__main__":
