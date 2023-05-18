@@ -1,7 +1,7 @@
 <launch>
 
   <node pkg="project2_phase1" type="controller_node.py" name="controller" output="screen">
-    <param name="linear_speed" value="0.2"/>
+    <param name="linear_speed" value="0.4"/>
     <param name="angular_speed" value="0.5"/>
     <param name="epsilon" value="0.01"/>
     <param name="iteration_num" value="5"/>

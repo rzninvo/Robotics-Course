@@ -149,6 +149,8 @@ class Controller:
             self.state = self.GO
 
         rospy.loginfo(f'FINISHED || Average Error: {errors_avg/self.iteration_num}')
+        twist = Twist()  
+        self.cmd_publisher.publish(Twist())
 
 
 if __name__ == "__main__":
