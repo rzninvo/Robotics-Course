@@ -1,0 +1,26 @@
+<launch>
+
+  <node pkg="project3_phase1" type="pid_control.py" name="pid_controller" output="screen">
+    <param name="linear_k_p" value="0.05"/>
+    <param name="linear_k_d" value="0.5"/>
+    <param name="linear_k_i" value="0.01"/>
+    <param name="angular_k_p" value="5"/>
+    <param name="angular_k_d" value="50"/>
+    <param name="angular_k_i" value="0"/>
+    <param name="dt" value="0.005"/>
+    <param name="next_x" value="10"/>
+    <param name="next_y" value="10"/>
+  </node>
+
+  <node pkg="project3_phase1" type="monitor.py" name="monitor" ></node>
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_empty_world.launch">
+    <arg name="x_pos" value="0.0"/>
+    <arg name="y_pos" value="0.0"/>
+    <arg name="z_pos" value="0.0"/>
+
+  </include>  
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch">
+  </include>
+</launch>
