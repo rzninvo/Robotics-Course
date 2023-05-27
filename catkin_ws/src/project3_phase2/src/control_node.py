@@ -188,8 +188,6 @@ class Controller:
         elif min_indx == 2:
             rotation = gamma_rotation
 
-        if (self.next_x == -3 and self.next_y == 2):
-            rospy.loginfo(f'ROTATION_GOAL = {rotation}')
         return rotation
 
     def run(self):

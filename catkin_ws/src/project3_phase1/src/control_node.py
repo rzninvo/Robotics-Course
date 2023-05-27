@@ -70,7 +70,23 @@ class Controller:
         return math.sqrt(((self.next_x - pos.x) ** 2) + ((self.next_y - pos.y) ** 2))
     
     def rotation_goal(self, msg):
-        return self.calculate_rotation_angle(msg) - self.get_heading(msg)
+        calculated_rotation_angle = self.calculate_rotation_angle(msg)
+        heading = self.get_heading(msg)
+        alpha_rotation = calculated_rotation_angle - heading
+        beta_rotation = alpha_rotation + 2 * math.pi
+        gamma_rotation = alpha_rotation - 2 * math.pi
+        
+        rotations = [abs(alpha_rotation), abs(beta_rotation), abs(gamma_rotation)]
+        min_indx = rotations.index(min(rotations))
+
+        if min_indx == 0:
+            rotation = alpha_rotation
+        elif min_indx == 1:
+            rotation = beta_rotation
+        elif min_indx == 2:
+            rotation = gamma_rotation
+
+        return rotation
 
     def run(self):
 
