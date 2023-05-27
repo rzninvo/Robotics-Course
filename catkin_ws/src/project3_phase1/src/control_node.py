@@ -136,7 +136,7 @@ class Controller:
 
         rospy.loginfo(f'FINISHED || Average Error: {errors_avg/self.iteration_num}')
         twist = Twist()  
-        self.cmd_publisher.publish(Twist())
+        self.cmd_vel.publish(Twist())
 
     def on_shutdown(self):
         rospy.loginfo("Stopping the robot...")
