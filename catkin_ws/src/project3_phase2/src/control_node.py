@@ -45,32 +45,39 @@ class Controller:
         min_y = 0
         msg = rospy.wait_for_message("/odom" , Odometry)
         pos = msg.pose.pose.position
-        if (self.min_index == -1):
-            for i in range(len(self.path)):
-                distance = math.sqrt(((self.path[i][0] - pos.x) ** 2) + ((self.path[i][1] - pos.y) ** 2))
-                if (min_dist > distance):
-                    min_dist = distance
-                    min_x = self.path[i][0]
-                    min_y = self.path[i][1]
-                    self.min_index = i
-        else:
-            min_dist = 99999
-            closest_corner_index = 0
-            for i in range(len(self.path)):
-                if (((i + 1) % 100 == 0) or (i == 0)) and (abs((i - self.min_index)) <= 100) and ((i - self.min_index) < 0):
+        if (self.path_type < 3):
+            if (self.min_index == -1):
+                for i in range(len(self.path)):
                     distance = math.sqrt(((self.path[i][0] - pos.x) ** 2) + ((self.path[i][1] - pos.y) ** 2))
-                    min_dist = distance
-                    min_x = self.path[i][0]
-                    min_y = self.path[i][1]
-                    self.min_index = i
-                    rospy.loginfo(f'MIN INDEX == {self.min_index}')
-                    break
-                elif self.min_index == 0:
-                    min_x = self.path[len(self.path) - 101][0]
-                    min_y = self.path[len(self.path) - 101][1]
-                    self.min_index = len(self.path) - 101
-                    rospy.loginfo(f'MIN INDEX_BRUH == {self.min_index}')
-                    break
+                    if (min_dist > distance):
+                        min_dist = distance
+                        min_x = self.path[i][0]
+                        min_y = self.path[i][1]
+                        self.min_index = i
+            else:
+                min_dist = 99999
+                closest_corner_index = 0
+                for i in range(len(self.path)):
+                    if (((i + 1) % 100 == 0) or (i == 0)) and (abs((i - self.min_index)) <= 100) and ((i - self.min_index) < 0):
+                        distance = math.sqrt(((self.path[i][0] - pos.x) ** 2) + ((self.path[i][1] - pos.y) ** 2))
+                        min_dist = distance
+                        min_x = self.path[i][0]
+                        min_y = self.path[i][1]
+                        self.min_index = i
+                        rospy.loginfo(f'MIN INDEX == {self.min_index}')
+                        break
+                    elif self.min_index == 0:
+                        min_x = self.path[len(self.path) - 101][0]
+                        min_y = self.path[len(self.path) - 101][1]
+                        self.min_index = len(self.path) - 101
+                        rospy.loginfo(f'MIN INDEX_BRUH == {self.min_index}')
+                        break
+        elif (self.path_type == 3):
+            if self.min_index == -1:
+                self.min_index = 0
+            min_x = self.path[self.min_index][0]
+            min_y = self.path[self.min_index][1]
+            self.min_index += 2
         rospy.loginfo(f'Current Pos: [{pos.x}, {pos.y}]')
         rospy.loginfo(f'Closest Dist: [{min_x}, {min_y}]')
         return [min_x, min_y]
@@ -143,7 +150,7 @@ class Controller:
             dx = a * math.exp(k * t) * math.cos(t)
             dy = a * math.exp(k * t) * math.sin(t)
             X.append(dx)
-            Y.append(dy) 
+            Y.append(dy)
         return zip(X, Y)
 
     # heading of the robot 
@@ -156,18 +163,18 @@ class Controller:
         )) 
 
         return yaw
-    
+
     # calculate the rotation need to reach the next angle
-    def calculate_rotation_angle(self, msg):
+    def calculate_rotation_angle(self, next_x, next_y, msg):
         pos = msg.pose.pose.position
-        return math.atan2(self.next_y - pos.y, self.next_x - pos.x)
+        return math.atan2(next_y - pos.y, next_x - pos.x)
 
     def distance_from_goal(self, msg):
         pos = msg.pose.pose.position
         return math.sqrt(((self.next_x - pos.x) ** 2) + ((self.next_y - pos.y) ** 2))
     
-    def rotation_goal(self, msg):
-        calculated_rotation_angle = self.calculate_rotation_angle(msg)
+    def rotation_goal(self, next_x, next_y, msg):
+        calculated_rotation_angle = self.calculate_rotation_angle(next_x, next_y, msg)
         heading = self.get_heading(msg)
         alpha_rotation = calculated_rotation_angle - heading
         beta_rotation = alpha_rotation + 2 * math.pi
@@ -190,7 +197,7 @@ class Controller:
         errors_avg = 0
         msg = rospy.wait_for_message("/odom" , Odometry)
         d = self.distance_from_goal(msg)
-        gamma = self.rotation_goal(msg)
+        gamma = self.rotation_goal(self.next_x, self.next_y, msg)
         linear_sum_i_theta = 0
         angular_sum_i_theta = 0
         linear_prev_theta_error = 0
@@ -203,7 +210,7 @@ class Controller:
             if (d <= self.epsilon):
                 self.next_x, self.next_y = self.get_closest_point()
                 d = self.distance_from_goal(msg)
-                gamma = self.rotation_goal(msg)
+                gamma = self.rotation_goal(self.next_x, self.next_y, msg)
                 linear_sum_i_theta = 0
                 angular_sum_i_theta = 0
                 linear_prev_theta_error = 0
@@ -239,7 +246,7 @@ class Controller:
             
             msg = rospy.wait_for_message("/odom" , Odometry)
             d = self.distance_from_goal(msg)
-            gamma = self.rotation_goal(msg)
+            gamma = self.rotation_goal(self.next_x, self.next_y, msg)
 
             self.r.sleep()
 
