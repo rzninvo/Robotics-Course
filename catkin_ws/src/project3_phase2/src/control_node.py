@@ -154,17 +154,12 @@ class Controller:
         roll, pitch, yaw = tf.transformations.euler_from_quaternion((
             orientation.x ,orientation.y ,orientation.z ,orientation.w
         )) 
-        
-        if (self.next_x == -3 and self.next_y == 2):
-            rospy.loginfo(f'HEADING = {yaw}')
 
         return yaw
     
     # calculate the rotation need to reach the next angle
     def calculate_rotation_angle(self, msg):
         pos = msg.pose.pose.position
-        if (self.next_x == -3 and self.next_y == 2):
-            rospy.loginfo(f'ROTATION ANGLE = {math.atan2(self.next_y - pos.y, self.next_x - pos.x)}')
         return math.atan2(self.next_y - pos.y, self.next_x - pos.x)
 
     def distance_from_goal(self, msg):
