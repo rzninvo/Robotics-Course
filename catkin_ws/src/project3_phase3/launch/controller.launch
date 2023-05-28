@@ -1,0 +1,25 @@
+<launch>
+
+  <node pkg="project3_phase3" type="control_node.py" name="controller" output="screen">
+    <param name="linear_spead" value="0.1"/>
+    <param name="angular_k_p" value="2.5"/>
+    <param name="angular_k_d" value="25"/>
+    <param name="angular_k_i" value="0"/>
+    <param name="dt" value="0.005"/>
+    <param name="distance" value="0.5"/>
+    <param name="epsilon" value="0.005"/>
+  </node>
+
+  <node pkg="project3_phase3" type="monitor.py" name="monitor" ></node>
+
+  <include file="$(find turtlebot3_gazebo)/launch/square.launch">
+    <arg name="x_pos" value="0.0"/>
+    <arg name="y_pos" value="0.0"/>
+    <arg name="z_pos" value="0.0"/>
+    <arg name="yaw" value="90.0"/>
+
+  </include>  
+
+  <include file="$(find turtlebot3_gazebo)/launch/turtlebot3_gazebo_rviz.launch">
+  </include>
+</launch>
