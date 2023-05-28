@@ -2,7 +2,7 @@
 
   <node pkg="project3_phase2" type="control_node.py" name="controller" output="screen">
     <param name="linear_k_p" value="0.5"/>
-    <param name="linear_k_d" value="6"/>
+    <param name="linear_k_d" value="20"/>
     <param name="linear_k_i" value="0.001"/>
     <param name="angular_k_p" value="4"/>
     <param name="angular_k_d" value="40"/>

@@ -2,14 +2,14 @@
 
   <node pkg="project3_phase1" type="pid_control.py" name="pid_controller" output="screen">
     <param name="linear_k_p" value="0.05"/>
-    <param name="linear_k_d" value="0.5"/>
+    <param name="linear_k_d" value="20"/>
     <param name="linear_k_i" value="0.01"/>
-    <param name="angular_k_p" value="5"/>
-    <param name="angular_k_d" value="50"/>
+    <param name="angular_k_p" value="1"/>
+    <param name="angular_k_d" value="10"/>
     <param name="angular_k_i" value="0"/>
     <param name="dt" value="0.005"/>
     <param name="next_x" value="10"/>
-    <param name="next_y" value="10"/>
+    <param name="next_y" value="0"/>
   </node>
 
   <node pkg="project3_phase1" type="monitor.py" name="monitor" ></node>

@@ -1,11 +1,11 @@
 <launch>
 
   <node pkg="project3_phase1" type="control_node.py" name="controller" output="screen">
-    <param name="linear_k_p" value="0.05"/>
-    <param name="linear_k_d" value="0.5"/>
+    <param name="linear_k_p" value="0.02"/>
+    <param name="linear_k_d" value="20"/>
     <param name="linear_k_i" value="0.005"/>
-    <param name="angular_k_p" value="10"/>
-    <param name="angular_k_d" value="200"/>
+    <param name="angular_k_p" value="5"/>
+    <param name="angular_k_d" value="50"/>
     <param name="angular_k_i" value="0"/>
     <param name="dt" value="0.005"/>
     <param name="epsilon" value="0.01"/>

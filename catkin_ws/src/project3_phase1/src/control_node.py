@@ -167,7 +167,6 @@ class Controller:
                     self.angular_errs, label='errs_angular')
         axs[1].axhline(y=0,color='R')
         axs[1].legend(loc="upper left", frameon=False)
-        axs[1].set_ylim([-0.5, 0.5])
         plt.draw()
         plt.savefig(f"phase_1_part2_errs_linear_{self.linear_k_p}_{self.linear_k_d}_{self.linear_k_i}_angular_{self.angular_k_p}_{self.angular_k_d}_{self.angular_k_i}.png")
         plt.show()

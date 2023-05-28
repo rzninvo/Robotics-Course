@@ -47,16 +47,16 @@ class Controller:
         return yaw
     
     # calculate the rotation need to reach the next angle
-    def calculate_rotation_angle(self, next_x, next_y, msg):
+    def calculate_rotation_angle(self, msg):
         pos = msg.pose.pose.position
-        return math.atan2(next_y - pos.y, next_x - pos.x)
+        return math.atan2(self.next_y - pos.y, self.next_x - pos.x)
 
     def distance_from_goal(self, msg):
         pos = msg.pose.pose.position
         return math.sqrt(((self.next_x - pos.x) ** 2) + ((self.next_y - pos.y) ** 2))
     
-    def rotation_goal(self, next_x, next_y, msg):
-        calculated_rotation_angle = self.calculate_rotation_angle(next_x, next_y, msg)
+    def rotation_goal(self, msg):
+        calculated_rotation_angle = self.calculate_rotation_angle(msg)
         heading = self.get_heading(msg)
         alpha_rotation = calculated_rotation_angle - heading
         beta_rotation = alpha_rotation + 2 * math.pi
@@ -72,11 +72,13 @@ class Controller:
         elif min_indx == 2:
             rotation = gamma_rotation
 
+        return rotation
+
     def run(self):
 
         msg = rospy.wait_for_message("/odom" , Odometry)
         d = self.distance_from_goal(msg)
-        gamma = self.rotation_goal(self.next_x, self.next_y, msg)
+        gamma = self.rotation_goal(msg)
         linear_sum_i_theta = 0
         angular_sum_i_theta = 0
         linear_prev_theta_error = 0
@@ -85,7 +87,7 @@ class Controller:
         move_cmd = Twist()
         move_cmd.angular.z = 0
         move_cmd.linear.x = 0
-        while (not rospy.is_shutdown()):
+        while (not rospy.is_shutdown())and  (d >= self.dt):
             self.cmd_vel.publish(move_cmd)
 
             err_d = d
@@ -103,19 +105,15 @@ class Controller:
             angular_I = self.angular_k_i * angular_sum_i_theta
             angular_D = self.angular_k_d * (err_gamma - angular_prev_theta_error)
 
-            rospy.loginfo(f"linear|| P : {linear_P} I : {linear_I} D : {linear_D}")
-            rospy.loginfo(f"angular|| P : {angular_P} I : {angular_I} D : {angular_D}")
             move_cmd.linear.x = linear_P + linear_I + linear_D
             move_cmd.angular.z = angular_P + angular_I + angular_D
             linear_prev_theta_error = err_d
             angular_prev_theta_error = err_gamma
             
-            rospy.loginfo(f"linear_error : {err_d} angular_error: {err_gamma} speed : {move_cmd.linear.x} theta : {move_cmd.angular.z}")
-            
             msg = rospy.wait_for_message("/odom" , Odometry)
             d = self.distance_from_goal(msg)
-            gamma = self.rotation_goal(self.next_x, self.next_y, msg)
-
+            gamma = self.rotation_goal(msg)
+           
             self.r.sleep()
 
     def on_shutdown(self):
