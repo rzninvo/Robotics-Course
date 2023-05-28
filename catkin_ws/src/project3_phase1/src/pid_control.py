@@ -47,22 +47,36 @@ class Controller:
         return yaw
     
     # calculate the rotation need to reach the next angle
-    def calculate_rotation_angle(self, msg):
+    def calculate_rotation_angle(self, next_x, next_y, msg):
         pos = msg.pose.pose.position
-        return math.atan2(self.next_y - pos.y, self.next_x - pos.x)
+        return math.atan2(next_y - pos.y, next_x - pos.x)
 
     def distance_from_goal(self, msg):
         pos = msg.pose.pose.position
         return math.sqrt(((self.next_x - pos.x) ** 2) + ((self.next_y - pos.y) ** 2))
     
-    def rotation_error(self, msg):
-        return self.calculate_rotation_angle(msg) - self.get_heading(msg)
+    def rotation_goal(self, next_x, next_y, msg):
+        calculated_rotation_angle = self.calculate_rotation_angle(next_x, next_y, msg)
+        heading = self.get_heading(msg)
+        alpha_rotation = calculated_rotation_angle - heading
+        beta_rotation = alpha_rotation + 2 * math.pi
+        gamma_rotation = alpha_rotation - 2 * math.pi
+        
+        rotations = [abs(alpha_rotation), abs(beta_rotation), abs(gamma_rotation)]
+        min_indx = rotations.index(min(rotations))
+
+        if min_indx == 0:
+            rotation = alpha_rotation
+        elif min_indx == 1:
+            rotation = beta_rotation
+        elif min_indx == 2:
+            rotation = gamma_rotation
 
     def run(self):
 
         msg = rospy.wait_for_message("/odom" , Odometry)
         d = self.distance_from_goal(msg)
-        gamma = self.rotation_error(msg)
+        gamma = self.rotation_goal(self.next_x, self.next_y, msg)
         linear_sum_i_theta = 0
         angular_sum_i_theta = 0
         linear_prev_theta_error = 0
@@ -100,7 +114,7 @@ class Controller:
             
             msg = rospy.wait_for_message("/odom" , Odometry)
             d = self.distance_from_goal(msg)
-            gamma = self.rotation_error(msg)
+            gamma = self.rotation_goal(self.next_x, self.next_y, msg)
 
             self.r.sleep()
 
