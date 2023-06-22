@@ -1,0 +1,8 @@
+prefix=/home/rohamzn/Robotics-Course/catkin_ws/install
+
+Name: turtlebot3_object_tracker
+Description: Description of turtlebot3_object_tracker
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

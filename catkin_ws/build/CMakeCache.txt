@@ -383,6 +383,10 @@ GMOCK_MAIN_LIBRARY_DEBUG:FILEPATH=GMOCK_MAIN_LIBRARY_DEBUG-NOTFOUND
 //The directory containing a CMake configuration file for GMock.
 GMock_DIR:PATH=GMock_DIR-NOTFOUND
 
+//Use Abseil and RE2. Requires Abseil and RE2 to be separately
+// added to the build.
+GTEST_HAS_ABSL:BOOL=OFF
+
 //Path to a file.
 GTEST_INCLUDE_DIR:PATH=/usr/include
 
@@ -399,7 +403,7 @@ GTEST_MAIN_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libgtest_main.a
 GTEST_MAIN_LIBRARY_DEBUG:FILEPATH=GTEST_MAIN_LIBRARY_DEBUG-NOTFOUND
 
 //The directory containing a CMake configuration file for GTest.
-GTest_DIR:PATH=GTest_DIR-NOTFOUND
+GTest_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/GTest
 
 //Compile with a sanitizer. Options are: Address, Memory, MemoryWithOrigins,
 // Undefined, Thread, Leak, 'Address;Undefined', CFI
@@ -751,6 +755,9 @@ ZeroMQ_DIR:PATH=ZeroMQ_DIR-NOTFOUND
 
 //Path to a library.
 ZeroMQ_LIBRARY_zmq:FILEPATH=/usr/lib/x86_64-linux-gnu/libzmq.so
+
+//Path to a program.
+_Python_EXECUTABLE:FILEPATH=/usr/bin/python3.8
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/src/googletest/googlemock/include/gmock/gmock.h
@@ -1153,6 +1160,12 @@ turtlebot3_navigation_BINARY_DIR:STATIC=/home/rohamzn/Robotics-Course/catkin_ws/
 turtlebot3_navigation_SOURCE_DIR:STATIC=/home/rohamzn/Robotics-Course/catkin_ws/src/turtlebot3/turtlebot3_navigation
 
 //Value Computed by CMake
+turtlebot3_object_tracker_BINARY_DIR:STATIC=/home/rohamzn/Robotics-Course/catkin_ws/build/turtlebot3_object_tracker
+
+//Value Computed by CMake
+turtlebot3_object_tracker_SOURCE_DIR:STATIC=/home/rohamzn/Robotics-Course/catkin_ws/src/turtlebot3_object_tracker
+
+//Value Computed by CMake
 turtlebot3_simulations_BINARY_DIR:STATIC=/home/rohamzn/Robotics-Course/catkin_ws/build/turtlebot3_simulations/turtlebot3_simulations
 
 //Value Computed by CMake
@@ -1370,7 +1383,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=22
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=23
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -1423,7 +1436,7 @@ CURL_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 CURL_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
 DART_DEFINITIONS:INTERNAL=
 DART_INCLUDE_DIRS:INTERNAL=/usr/include
-DART_LIBRARIES:INTERNAL=dart;dart;dart;dart;dart;dart;dart;dart;dart;dart
+DART_LIBRARIES:INTERNAL=dart;dart;dart;dart;dart;dart;dart;dart;dart;dart;dart;dart;dart
 //Boost min version requirement
 DART_MIN_BOOST_VERSION:INTERNAL=1.58.0
 DART_dart_DEFINITIONS:INTERNAL=
@@ -1440,7 +1453,7 @@ FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/x86_64-linux-gnu/cmake/Boo
 //Details about finding CURL
 FIND_PACKAGE_MESSAGE_DETAILS_CURL:INTERNAL=[/usr/lib/x86_64-linux-gnu/libcurl.so][/usr/include/x86_64-linux-gnu][c ][v7.68.0()]
 //Details about finding DART
-FIND_PACKAGE_MESSAGE_DETAILS_DART:INTERNAL=[/usr/include][dart;dart;dart;dart;dart;dart;dart;dart;dart;dart][cfound components: dart ][v(6.6)]
+FIND_PACKAGE_MESSAGE_DETAILS_DART:INTERNAL=[/usr/include][dart;dart;dart;dart;dart;dart;dart;dart;dart;dart;dart;dart;dart][cfound components: dart ][v(6.6)]
 //Details about finding DL
 FIND_PACKAGE_MESSAGE_DETAILS_DL:INTERNAL=[true][v()]
 //Details about finding JSONCPP
@@ -1451,8 +1464,10 @@ FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.p
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding Protobuf
 FIND_PACKAGE_MESSAGE_DETAILS_Protobuf:INTERNAL=[/usr/lib/x86_64-linux-gnu/libprotobuf.so;-lpthread][/usr/include][v3.6.1(3)]
+//Details about finding Python
+FIND_PACKAGE_MESSAGE_DETAILS_Python:INTERNAL=[/usr/bin/python3.8][cfound components: Interpreter ][v3.8.10()]
 //Details about finding PythonInterp
-FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.8.10()]
+FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.8.10(3)]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 //Details about finding UUID
@@ -2073,6 +2088,11 @@ ZeroMQ_libzmq _PREFIX:INTERNAL=
 ZeroMQ_libzmq _VERSION:INTERNAL=
 //CMAKE_INSTALL_PREFIX during last run
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/home/rohamzn/Robotics-Course/catkin_ws/install
+//ADVANCED property for variable: _Python_EXECUTABLE
+_Python_EXECUTABLE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: _Python_INTERPRETER_SIGNATURE
+_Python_INTERPRETER_SIGNATURE-ADVANCED:INTERNAL=1
+_Python_INTERPRETER_SIGNATURE:INTERNAL=60fbcba4d3ec42cb22d9b25de2c7c03a
 __pkg_config_arguments_BULLET:INTERNAL=bullet>=2.82
 __pkg_config_arguments_JSONCPP:INTERNAL=jsoncpp
 __pkg_config_arguments_OGRE_PKGC:INTERNAL=OGRE
@@ -2115,6 +2135,7 @@ boost_regex_DIR-ADVANCED:INTERNAL=1
 boost_system_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_thread_DIR
 boost_thread_DIR-ADVANCED:INTERNAL=1
+cmake_package_name:INTERNAL=GTest
 //ADVANCED property for variable: gmock_build_tests
 gmock_build_tests-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gtest_build_samples

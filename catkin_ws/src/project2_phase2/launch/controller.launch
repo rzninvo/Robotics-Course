@@ -17,7 +17,7 @@
     <arg name="x_pos" value="0.0"/>
     <arg name="y_pos" value="0.0"/>
     <arg name="z_pos" value="0.0"/>
-    <arg name="yaw" default="0.75"/>
+    <arg name="yaw" value="0.75"/>
 
 
 

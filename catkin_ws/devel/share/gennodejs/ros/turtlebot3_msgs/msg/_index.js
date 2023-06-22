@@ -2,11 +2,11 @@
 "use strict";
 
 let SensorState = require('./SensorState.js');
-let Sound = require('./Sound.js');
 let VersionInfo = require('./VersionInfo.js');
+let Sound = require('./Sound.js');
 
 module.exports = {
   SensorState: SensorState,
-  Sound: Sound,
   VersionInfo: VersionInfo,
+  Sound: Sound,
 };
