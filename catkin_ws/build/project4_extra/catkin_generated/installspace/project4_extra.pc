@@ -1,0 +1,8 @@
+prefix=/home/rohamzn/Robotics-Course/catkin_ws/install
+
+Name: project4_extra
+Description: Description of project4_extra
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
