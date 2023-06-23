@@ -52,9 +52,9 @@ class Controller:
         min_left_rng = min(laser_data.ranges[45:135])
         min_left_index = laser_data.ranges.index(min_left_rng)
         front_rng = laser_data.ranges[0]
-        right_rng = laser_data.ranges[270]
-        left_rng = laser_data.ranges[90]
-        distances = [min_front_rng, min_right_rng, min_right_index, min_left_rng, min_left_index, front_rng, right_rng, left_rng]
+        right_full_rng = min(laser_data.ranges[180:360])
+        left_full_rng = min(laser_data.ranges[0:180])
+        distances = [min_front_rng, min_right_rng, min_right_index, min_left_rng, min_left_index, front_rng, right_full_rng, left_full_rng]
 
         return distances
     
@@ -150,9 +150,9 @@ class Controller:
             msg = rospy.wait_for_message("/odom" , Odometry)
             distances = self.distance_from_wall()
             if self.turn_direction == 1:
-                gamma = self.distance_threshold - distances[1]
+                gamma = self.distance_threshold - distances[6]
             elif self.turn_direction == -1:
-                gamma = distances[3] - self.distance_threshold 
+                gamma = distances[7] - self.distance_threshold 
 
             if ((distances[5] - self.distance_threshold) <= self.epsilon):
                 twist = Twist()
